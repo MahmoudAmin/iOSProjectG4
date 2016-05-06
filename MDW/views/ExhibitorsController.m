@@ -16,7 +16,6 @@
 
 @interface ExhibitorsController (){
     NSArray *responseData;
-
 }
 
 @end
@@ -31,6 +30,7 @@
     NetWorkHandler *netcal=[netMang connect];
     [netcal getExhibitorWithEmail:super.profile_.email WithDelgate:self];
 }
+//open link
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[responseData [indexPath.row] companyUrl]]];
@@ -39,12 +39,15 @@
 -(void) handleSuccess:(id) data{
     responseData =data;
     [self.tableView  reloadData];
-
+    JETSExhibitorModel *model=[JETSExhibitorModel new];
+    [model removeALL];
+    for (JETSExhibitor *exhi in responseData) {
+        [model createBean:exhi];
+    }
 }
 -(void) handleFaild{
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please check your connection" delegate:nil cancelButtonTitle:@"" otherButtonTitles:@"Ok", nil];
-    [alert show];
+    responseData =[[JETSExhibitorModel new] findAll];
+    [self.tableView  reloadData];
 }
 
 -(void)getLatestExhibitors{
@@ -75,6 +78,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [responseData count];

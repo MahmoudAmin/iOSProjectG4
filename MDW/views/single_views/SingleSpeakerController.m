@@ -40,7 +40,8 @@
     [_compName renderHTML:_speaker.title];
     [_job setText:_speaker.companyName];
     [_txtView setText:_speaker.biography];
-    [_imgView setImage:[UIImage imageNamed:@"Speaker.png"]];
+    [[[NetWorkManager new] connect] setImagefromUrl:_speaker.imageURL withDefult:@"Speaker.png" forImage:_imgView];
+    
     
 }
 -(void)dismissSelf{

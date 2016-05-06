@@ -29,7 +29,7 @@
     JETSExhibitor *exhibitor=(JETSExhibitor *) bean;
     
     NSString *insertSQL = [NSString stringWithFormat:
-                           @"INSERT INTO Exhibitor (id, imageURL, companyAddress, companyAbout, fax, contactName, contactTitle, companyUrl, email, countryName, cityName, companyName, phones, mobiles) VALUES (%ld, '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')",
+                           @"INSERT INTO Exhibitor (id, imageURL, companyAddress, companyAbout, fax, contactName, contactTitle, companyUrl, email, countryName, cityName, companyName, phones, mobiles) VALUES (%ld, '%@', '%@', \"%@\", '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@', '%@')",
                            exhibitor.id, exhibitor.imageURL, exhibitor.companyAddress, exhibitor.companyAbout, exhibitor.fax, exhibitor.contactName, exhibitor.contactTitle, exhibitor.companyUrl, exhibitor.email, exhibitor.countryName, exhibitor.cityName, exhibitor.companyName, [exhibitor.phones componentsJoinedByString:@","], [exhibitor.mobiles componentsJoinedByString:@","]];
     
     [connection excuteUpdate:insertSQL];

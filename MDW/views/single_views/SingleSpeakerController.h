@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 #import "JETSSpeaker.h"
+#import "NetWorkManager.h"
+#import "NetWorkHandler.h"
 
 @interface SingleSpeakerController : UIViewController
 @property JETSSpeaker *speaker;

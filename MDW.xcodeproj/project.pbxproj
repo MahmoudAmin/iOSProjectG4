@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2708E0941CD8D627007204B4 /* MasterTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2708E0931CD8D627007204B4 /* MasterTableController.m */; };
+		2748CA6D1CDD24C100873F44 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2748CA6C1CDD24C100873F44 /* Reachability.m */; };
 		27492D921CD6170A003DBC3D /* logo_xl.png in Resources */ = {isa = PBXBuildFile; fileRef = 27492D911CD6170A003DBC3D /* logo_xl.png */; };
 		279FD5BA1CD7A0C900CEE9F8 /* JETSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 279FD5B91CD7A0C900CEE9F8 /* JETSResponse.m */; };
 		279FD5C11CD7EC4500CEE9F8 /* lock-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 279FD5BB1CD7EC4500CEE9F8 /* lock-24.png */; };
@@ -341,6 +342,8 @@
 /* Begin PBXFileReference section */
 		2708E0921CD8D627007204B4 /* MasterTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterTableController.h; sourceTree = "<group>"; };
 		2708E0931CD8D627007204B4 /* MasterTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterTableController.m; sourceTree = "<group>"; };
+		2748CA6B1CDD24C100873F44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2748CA6C1CDD24C100873F44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		27492D911CD6170A003DBC3D /* logo_xl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_xl.png; sourceTree = "<group>"; };
 		279FD5B81CD7A0C900CEE9F8 /* JETSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JETSResponse.h; sourceTree = "<group>"; };
 		279FD5B91CD7A0C900CEE9F8 /* JETSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JETSResponse.m; sourceTree = "<group>"; };
@@ -984,6 +987,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2748CA6A1CDD245C00873F44 /* reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2748CA6B1CDD24C100873F44 /* Reachability.h */,
+				2748CA6C1CDD24C100873F44 /* Reachability.m */,
+			);
+			path = reachability;
+			sourceTree = "<group>";
+		};
 		27F35DB61CD95D8600B10061 /* customCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1058,6 +1070,7 @@
 		611CA8381CD0E9690003EA81 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				2748CA6A1CDD245C00873F44 /* reachability */,
 				611CA8EA1CD11FF50003EA81 /* ZXingObjC */,
 				611CA8E51CD105030003EA81 /* htmlCategory */,
 				611CA8D31CD100C90003EA81 /* revalMenu */,
@@ -2440,6 +2453,7 @@
 				611CAB381CD120150003EA81 /* ZXBinaryBitmap.m in Sources */,
 				61B2707A1CD14680002274B9 /* SpeakersController.m in Sources */,
 				611CA8491CD0E9BE0003EA81 /* FMDatabaseQueue.m in Sources */,
+				2748CA6D1CDD24C100873F44 /* Reachability.m in Sources */,
 				611CAB3D1CD120150003EA81 /* ZXErrors.m in Sources */,
 				611CABA71CD120150003EA81 /* ZXPDF417Dimensions.m in Sources */,
 				611CAB3A1CD120150003EA81 /* ZXDecodeHints.m in Sources */,

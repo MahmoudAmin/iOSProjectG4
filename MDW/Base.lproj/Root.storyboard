@@ -892,6 +892,7 @@
                     <tabBarItem key="tabBarItem" title="Info" image="tab_info.png" id="bti-bX-koN"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="imgView" destination="Puc-fA-kad" id="NyQ-Gf-HST"/>
                         <outlet property="userImage" destination="Puc-fA-kad" id="oRS-9i-nTm"/>
                         <outlet property="userTitle" destination="9NU-bB-xdC" id="m0P-gj-vuo"/>
                     </connections>

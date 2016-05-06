@@ -16,33 +16,60 @@
 #import "JETSExhibitor.h"
 
 @implementation NetWorkHandler
-//load image
+
+//load image in table view
 -(void)setImagefromUrl:(NSString*)url withDefult:(NSString*)imageNamed forImage:(UIImageView*)image inCell:(UITableViewCell*) cell
 {
-    [image setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:imageNamed]];
+
 
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     UIImage *placeholderImage = [UIImage imageNamed:imageNamed];
-    
     __weak UITableViewCell *weakCell = cell;
-    
     [cell.imageView setImageWithURLRequest:request
                           placeholderImage:placeholderImage
                                    success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                       
                                        weakCell.imageView.image = image;
                                        [weakCell setNeedsLayout];
+                                       CGSize itemSize = CGSizeMake(40, 40);
                                        
-                                   } failure:nil];
+                                       UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+                                       CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+                                       [weakCell.imageView.image drawInRect:imageRect];
+                                       weakCell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+                                       UIGraphicsEndImageContext();
+                                       
+                                   }
+                                   failure:nil];
+    
     
 }
+-(void)setImagefromUrl:(NSString*)url withDefult:(NSString*)imageNamed forImage:(UIImageView*)image
+{
+    __block UIImageView*img=image;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    UIImage *placeholderImage = [UIImage imageNamed:imageNamed];
+    [image setImageWithURLRequest:request
+                          placeholderImage:placeholderImage
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *imageResult) {
+                                       img.image=imageResult;
+                                   }
+                                   failure:nil];
+    
+    
+}
+
+
 //check connection
 - (BOOL)connected {
-    return [AFNetworkReachabilityManager sharedManager].reachable;
+    return [[Reachability  reachabilityWithHostname:@"www.mobiledeveloperweekend.net"] isReachable];
 }
 
 -(void) loginWithEmail:(NSString *)email andPassword:(NSString *)pass WithDelgate:(id<NetWorkDelegate>)netDelegate{
-    __block NSDictionary *mydic=[NSDictionary new];
+    if (![self connected]) {
+        [netDelegate handleFaild];
+        return;
+    }
+ __block NSDictionary *mydic=[NSDictionary new];
     NSString *mystring = [NSString stringWithFormat:@"http://www.mobiledeveloperweekend.net/service/login?userName=%@&password=%@",email,pass];
 
     mydic = [NSDictionary new];
@@ -88,6 +115,10 @@
 }
 
 -(void) getProfileWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate{
+    if (![self connected]) {
+        [netDelegate handleFaild];
+        return;
+    }
 //geting url of webservice
     __block NSDictionary *mydic=[NSDictionary new];
     NSString *mystring = [NSString stringWithFormat:@"http://www.mobiledeveloperweekend.net/service/getAttendeeProfile?userName=%@",email];
@@ -136,6 +167,10 @@
 }
 
 -(void) getSpeakersWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate{
+    if (![self connected]) {
+        [netDelegate handleFaild];
+        return;
+    }
 //geting url of webservice
     __block NSDictionary *mydic=[NSDictionary new];
 
@@ -194,7 +229,11 @@
 }
 
 -(void) getSessionsWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate{
-  //geting url of webservice
+    if (![self connected]) {
+        [netDelegate handleFaild];
+        return;
+    }
+ //geting url of webservice
     __block NSDictionary *mydic=[NSDictionary new];
 
  NSString *mystring = [NSString stringWithFormat:@"http://www.mobiledeveloperweekend.net/service/getSessions?userName=%@",email];
@@ -270,7 +309,11 @@
  }
 
 -(void)getExhibitorWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate{
-   //geting url of webservice
+    if (![self connected]) {
+        [netDelegate handleFaild];
+        return;
+    }
+    //geting url of webservice
     __block NSDictionary *mydic=[NSDictionary new];
 
     NSString *myexhibitor=[NSString stringWithFormat:@"http://www.mobiledeveloperweekend.net/service/getExhibitors?userName=%@",email];

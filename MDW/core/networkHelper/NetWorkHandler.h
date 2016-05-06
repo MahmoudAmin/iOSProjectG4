@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "NetWorkDelegate.h"
 #import "UIImageView+AFNetworking.h"
+#import "Reachability.h"
+//#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface NetWorkHandler : NSObject
 
@@ -17,6 +19,9 @@
 -(void) getProfileWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate;
 -(void) getSessionsWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate;
 -(void) getExhibitorWithEmail:(NSString *)email WithDelgate:(id<NetWorkDelegate>)netDelegate;
--(void) setImagefromUrl:(NSString*)url withDefult:(NSString*)imageNamed forImage:(UIImageView*)image inCell:(UITableViewCell*) cell;
+-(void) setImagefromUrl:(NSString*)url withDefult:(NSString*)imageNamed
+               forImage:(UIImageView*)image inCell:(UITableViewCell*) cell;
+-(void) setImagefromUrl:(NSString*)url withDefult:(NSString*)imageNamed
+               forImage:(UIImageView*)image;
 @end
 
